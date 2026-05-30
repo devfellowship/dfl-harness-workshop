@@ -46,7 +46,11 @@ export function createModel(cfg: HarnessConfig = loadConfig()) {
     baseURL: "https://openrouter.ai/api/v1",
     apiKey,
   });
-  return openrouter(cfg.model);
+  // The shared workshop key is OSS-only (closed-source / big-lab models are
+  // blocked), so the default model MUST be an open model that also tool-calls.
+  // Override per-run with OPENROUTER_MODEL=... without editing the config.
+  const model = process.env.OPENROUTER_MODEL || cfg.model;
+  return openrouter(model);
 }
 
 /** Step 01 — the prompt (the agent's approach to the problem). */
