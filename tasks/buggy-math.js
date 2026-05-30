@@ -6,7 +6,7 @@
 // Your job: make `npm test` go green. (Hint: look at the starting value.)
 
 export function sum(numbers) {
-  let total = 1; // <-- bug lives here
+  let total = 0;
   for (const n of numbers) {
     total += n;
   }
