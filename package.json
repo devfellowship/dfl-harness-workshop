@@ -1,0 +1,11 @@
+{
+  "name": "dfl-harness-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A tiny kata version of the DFL agent harness — fix the task, make the grader pass.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "harness": "node src/harness.js"
+  }
+}
