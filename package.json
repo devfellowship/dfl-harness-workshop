@@ -1,11 +1,23 @@
 {
   "name": "dfl-harness-workshop",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
-  "description": "A tiny kata version of the DFL agent harness — fix the task, make the grader pass.",
   "type": "module",
+  "description": "A hands-on kata: build an agent step by step, point it at a problem, eval it, publish, version, iterate — a tiny dfl-harness.",
   "scripts": {
-    "test": "node --test",
-    "harness": "node src/harness.js"
+    "step": "tsx",
+    "test": "node --test --import tsx problem/buggy-math.test.ts",
+    "eval": "tsx steps/07-eval/run.ts",
+    "publish": "tsx steps/08-publish/run.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/openai-compatible": "^1.0.39",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "ai": "^5.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0"
   }
 }

@@ -1,0 +1,5 @@
+{
+  "version": "0.0.1",
+  "model": "anthropic/claude-3.5-haiku",
+  "temperature": 0
+}
