@@ -23,7 +23,24 @@ Pick whichever is easiest:
   Runs on *your* personal free Codespaces quota.
 - **VS Code locally:** clone, then **"Reopen in Container"** (needs Docker +
   the Dev Containers extension). Same devcontainer.
-- **No container:** clone + Node 20+, then `npm install`.
+- **No container:** clone + Node 20+, then `npm install`. See **Run it locally** below.
+
+### Run it locally
+
+**Requirements: Node 20+ (Node 22 recommended) and git. That's it.** **No Docker
+required** for this path — Docker is only needed if you choose the devcontainer
+option above. Works on Windows / macOS / Linux (no native dependencies).
+
+```bash
+git clone https://github.com/devfellowship/dfl-harness-workshop.git
+cd dfl-harness-workshop
+npm install            # zero build step — everything runs via tsx
+export OPENROUTER_API_KEY=sk-or-v1-...   # from the 1Password link above
+npx tsx steps/00-model/run.ts            # then 01, 02, 03, ...
+```
+
+> **Tip:** if your Node is older than 20, use **Codespaces** instead — it removes
+> all local setup and runs on your free quota (avoids "works on my machine").
 
 > **Want to keep your work / appear on the leaderboard?** **Fork** this repo
 > first, then open the Codespace **on your fork**. Forks work with Codespaces
@@ -34,7 +51,7 @@ Pick whichever is easiest:
 The workshop uses one shared **OpenRouter** key (works for any model). Grab it
 from this 1Password link (expires ~24h after the event):
 
-**🔑 https://share.1password.com/s#Fur3ZQuR_Otbb9Up7kQPsOowbiC4zyUbgBjUCOkdyQg**
+**🔑 https://share.1password.com/s#mm65JxTig6gCPqmr1SQowuEHDWxS5Ss6d58t259-YLY**
 
 Then either export it:
 
