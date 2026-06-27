@@ -9,10 +9,15 @@ the skill is this instruction block, injected into the system prompt at step 05.
 
 1. Read the failing test to learn the EXPECTED behavior (inputs → outputs).
 2. Read the implementation. Trace one failing case by hand.
-3. Form a one-line hypothesis about the single root cause.
-4. Apply the smallest change that makes ALL cases pass. Do not change the signature.
-5. Write the full corrected file to `agent/solution/buggy-math.ts`.
-6. Prefer correctness over cleverness; leave comments only where they aid the reader.
+3. **Verify ground truth before concluding.** When the bug is about an on-chain
+   outcome, fetch the userOp receipt with the read-only query tool
+   (`node tools/query.mjs receipt <hash>` or the `get_userop_receipt` MCP tool)
+   and trust the receipt's own `success` — never the UI narrative or a
+   batch-level status.
+4. Form a one-line hypothesis about the single root cause.
+5. Apply the smallest change that makes ALL cases pass. Do not change the signature.
+6. Write the full corrected file to `agent/solution/buggy-math.ts`.
+7. Prefer correctness over cleverness; leave comments only where they aid the reader.
 
 ## Definition of done
 

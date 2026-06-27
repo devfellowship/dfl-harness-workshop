@@ -11,7 +11,7 @@ OPENROUTER_API_KEY=$KEY npx tsx steps/06-solution/run.ts
 
 **What to look for**
 - A `--- tools called ---` list including `write_file` (likely after a `read_file`).
-- The fix written to `agent/solution/buggy-math.ts` (`total` starts at `0`).
+- The fix written to `agent/solution/buggy-math.ts` (`isUserOpSuccess` returns `receipt.success`).
 - A closing hint to run `npm run eval` (or `npm test`) to score it.
 
 **Try this** — Run `npm run eval -- tests` before this step (tests FAIL), then after this step (tests PASS) to see the eval flip.

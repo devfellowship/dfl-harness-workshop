@@ -1,0 +1,15 @@
+{
+  "userOpHash": "0xfa11ed",
+  "success": true,
+  "actualGasUsed": "0x1a2b3c",
+  "sender": "0xPodsSmartAccount000000000000000000000001",
+  "nonce": "0x7",
+  "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
+  "receipt": {
+    "transactionHash": "0xbatch1deadbeef0000000000000000000000000000000000000000000000aa01",
+    "blockNumber": "0x12d4f2a",
+    "from": "0xBundlerEOA0000000000000000000000000000aa",
+    "to": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+  },
+  "_note": "FALSE-NEGATIVE case: the userOp SUCCEEDED on-chain (success=true) but the bundler omitted receipt.status. Reading the batch status renders this withdrawal as 'failed' in the UI. Ground truth: success=true."
+}
