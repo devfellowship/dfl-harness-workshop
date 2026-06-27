@@ -27,6 +27,63 @@ Nothing is hidden — read the `run.ts`, run it, watch the agent grow.
 
 ---
 
+## ⚡ Quick commands (copy-paste, in order)
+
+Everything an attendee runs, top to bottom. Node 20+ only — `npx`/`npm`, zero
+global install. (Prefer **Codespaces** if your local Node is older than 20 — see
+[§1](#1-open-it--no-org-membership-needed).)
+
+**1. Clone + install**
+
+```bash
+git clone -b web3 https://github.com/devfellowship/dfl-harness-workshop.git
+cd dfl-harness-workshop
+npm install
+```
+
+**2. Set the key** (grab it from the 1Password link in [§2](#2-get-the-key) — expires ~24h after the event)
+
+```bash
+export OPENROUTER_API_KEY=sk-or-v1-...
+```
+
+> **Model note:** the harness already defaults to `anthropic/claude-haiku-4.5`
+> (set in `agent/harness.config.json`). If the shared key runs low, fall back to
+> the OSS model: `export OPENROUTER_MODEL=qwen/qwen-2.5-72b-instruct`.
+
+**3. Run the steps in order** (each prints what it does — read the `steps/NN-*/README.md` alongside)
+
+```bash
+npx tsx steps/00-model/run.ts
+npx tsx steps/01-prompt/run.ts
+npx tsx steps/02-tool/run.ts
+npx tsx steps/03-context/run.ts
+npx tsx steps/04-mcp/run.ts
+npx tsx steps/05-skill/run.ts
+npx tsx steps/06-solution/run.ts
+npx tsx steps/07-eval/run.ts
+npx tsx steps/08-publish/run.ts
+npx tsx steps/09-version/run.ts
+npx tsx steps/10-iterate/run.ts
+```
+
+**4. The read-only query tool** (the §1.1 pattern — reads LOCAL fixtures, no chain, no key)
+
+```bash
+npm run query -- list
+npm run query -- receipt 0xfa11ed     # the false-negative userOp receipt
+# (equivalent: node tools/query.mjs receipt 0xfa11ed)
+```
+
+**5. Eval** (run it before *and* after `steps/06-solution` to feel the loop)
+
+```bash
+npm run eval -- tests          # deterministic, no key needed → red until you fix it
+npm run eval                   # all graders (needs the key)
+```
+
+---
+
 ## 1. Open it — no org membership needed
 
 This repo is **public**. You do **not** need to be a member of `devfellowship`.
@@ -49,16 +106,16 @@ option above. Works on Windows / macOS / Linux (no native dependencies).
 git clone -b web3 https://github.com/devfellowship/dfl-harness-workshop.git
 cd dfl-harness-workshop
 npm install            # zero build step — everything runs via tsx
-export OPENROUTER_API_KEY=sk-or-v1-...   # from the 1Password link above
+export OPENROUTER_API_KEY=sk-or-v1-...   # from the 1Password link below
 npx tsx steps/00-model/run.ts            # then 01, 02, 03, ...
 ```
 
 Quick smoke of the read-only query tool (no key needed):
 
 ```bash
-node tools/query.mjs receipt 0xfa11ed    # the false-negative userOp receipt → exit 0
-node tools/query.mjs receipt 0xnope      # missing hash → exit 3
-npm run eval -- tests                    # deterministic tests → FAIL until you fix it
+npm run query -- receipt 0xfa11ed        # the false-negative userOp receipt → exit 0
+npm run query -- receipt 0xnope          # missing hash → exit 3
+npm run eval -- tests                     # deterministic tests → FAIL until you fix it
 ```
 
 > **Tip:** if your Node is older than 20, use **Codespaces** instead — it removes
@@ -87,11 +144,10 @@ export OPENROUTER_API_KEY=sk-or-v1-...
 cp .env.example .env   # then edit .env
 ```
 
-> **Model note:** the shared workshop key is **OSS-only** — `agent/harness.config.json`
-> defaults to an open tool-calling model (`qwen/qwen-2.5-72b-instruct`). Do **not**
-> set an `anthropic/*` model on the shared key (it's blocked and will break the run).
-> If you bring your OWN key that allows paid models,
-> `OPENROUTER_MODEL=anthropic/claude-haiku-4.5 npx tsx steps/06-solution/run.ts` works.
+> **Model note:** the harness defaults to `anthropic/claude-haiku-4.5`
+> (`agent/harness.config.json`). If the shared key runs low, fall back to the OSS
+> model with `OPENROUTER_MODEL=qwen/qwen-2.5-72b-instruct` (an open tool-calling
+> model). e.g. `OPENROUTER_MODEL=qwen/qwen-2.5-72b-instruct npx tsx steps/06-solution/run.ts`.
 
 ## 3. Run the steps in order
 
