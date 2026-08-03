@@ -1,0 +1,17 @@
+{
+  "userOpHash": "0xdead",
+  "success": false,
+  "reason": "execution reverted",
+  "actualGasUsed": "0x5208",
+  "sender": "0xPodsSmartAccount000000000000000000000004",
+  "nonce": "0x1",
+  "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
+  "receipt": {
+    "status": 0,
+    "transactionHash": "0xbatch4deadbeef0000000000000000000000000000000000000000000000aa04",
+    "blockNumber": "0x12d4f55",
+    "from": "0xBundlerEOA0000000000000000000000000000aa",
+    "to": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+  },
+  "_note": "BOTH-FAILED case: userOp reverted and the whole batch reverted (status=0). Both read-paths agree. Ground truth: success=false."
+}

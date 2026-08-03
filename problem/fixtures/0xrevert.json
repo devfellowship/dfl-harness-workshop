@@ -1,0 +1,17 @@
+{
+  "userOpHash": "0xrevert",
+  "success": false,
+  "reason": "AA23 reverted: insufficient balance",
+  "actualGasUsed": "0x9f80",
+  "sender": "0xPodsSmartAccount000000000000000000000002",
+  "nonce": "0x3",
+  "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
+  "receipt": {
+    "status": 1,
+    "transactionHash": "0xbatch2deadbeef0000000000000000000000000000000000000000000000aa02",
+    "blockNumber": "0x12d4f33",
+    "from": "0xBundlerEOA0000000000000000000000000000aa",
+    "to": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+  },
+  "_note": "MISLEADING-BATCH case: the handleOps batch tx mined fine (status=1) for the other userOps in the bundle, but THIS userOp reverted (success=false). Trusting the batch status would WRONGLY show 'success'. Ground truth: success=false."
+}

@@ -1,0 +1,16 @@
+{
+  "userOpHash": "0x900d",
+  "success": true,
+  "actualGasUsed": "0x11170",
+  "sender": "0xPodsSmartAccount000000000000000000000003",
+  "nonce": "0xc",
+  "entryPoint": "0x0000000071727De22E5E9d8BAf0edAc6f37da032",
+  "receipt": {
+    "status": 1,
+    "transactionHash": "0xbatch3deadbeef0000000000000000000000000000000000000000000000aa03",
+    "blockNumber": "0x12d4f41",
+    "from": "0xBundlerEOA0000000000000000000000000000aa",
+    "to": "0x0000000071727De22E5E9d8BAf0edAc6f37da032"
+  },
+  "_note": "HAPPY-PATH case: userOp succeeded and the batch mined. Both the buggy and correct read-paths agree here. Ground truth: success=true."
+}

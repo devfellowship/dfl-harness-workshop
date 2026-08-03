@@ -13,7 +13,7 @@ const res = await generateText({
   tools: { read_file: fsTools.read_file },
   stopWhen: stepCountIs(5),
   prompt:
-    "Read problem/buggy-math.ts and tell me what the sum function currently does. Do NOT fix it yet.",
+    "Read problem/buggy-math.ts and tell me what isUserOpSuccess currently does (which field it reads). Do NOT fix it yet.",
 });
 
 console.log("--- tools the agent called ---");

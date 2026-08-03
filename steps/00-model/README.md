@@ -10,7 +10,7 @@ OPENROUTER_API_KEY=$KEY npx tsx steps/00-model/run.ts
 ```
 
 **What to look for**
-- First line prints the active model from `agent/harness.config.json` (e.g. `model: anthropic/claude-3.5-haiku`).
-- A one-sentence, generic definition of "an AI agent" — no awareness of this repo or the bug.
+- First line prints the active model from `agent/harness.config.json` (e.g. `model: qwen/qwen-2.5-72b-instruct`).
+- A one-sentence, generic definition of "an AI agent" — no awareness of this repo or the userOp bug.
 
 **Try this** — Change `"model"` in `agent/harness.config.json` (any OpenRouter model id) and re-run to see a different model answer.

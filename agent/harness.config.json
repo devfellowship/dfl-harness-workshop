@@ -1,5 +1,5 @@
 {
   "version": "0.0.1",
-  "model": "qwen/qwen-2.5-72b-instruct",
+  "model": "anthropic/claude-haiku-4.5",
   "temperature": 0
 }

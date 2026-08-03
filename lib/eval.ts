@@ -51,8 +51,9 @@ export async function runLlmJudge() {
   const res = await generateText({
     model: createModel(),
     system:
-      "You are a strict code reviewer. Score a solution for the `sum(numbers)` task " +
-      "(should total an array of numbers). Reply EXACTLY as:\nSCORE: <0-10>\nRATIONALE: <one sentence>",
+      "You are a strict code reviewer. Score a solution for the `isUserOpSuccess(receipt)` task " +
+      "(an ERC-4337 userOp receipt; it must return the userOp's own `receipt.success`, " +
+      "NOT the handleOps batch `receipt.receipt.status`). Reply EXACTLY as:\nSCORE: <0-10>\nRATIONALE: <one sentence>",
     prompt: "Here is the candidate solution:\n\n```ts\n" + code + "\n```",
   });
   const score = Number(res.text.match(/SCORE:\s*(\d+(?:\.\d+)?)/i)?.[1] ?? 0);
